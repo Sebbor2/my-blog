@@ -6,24 +6,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Article } from './article';
 import { ARTICLES } from './mock-articles';
 
-// rXlr98@6
-/*const httpOptions = {
-  headers: new HttpHeaders({
-    'Access-Control-Allow-Origin':'*',
-    'Access-Control-Request-Method': 'GET OPTION',
-  })
-};*/
-
 @Injectable()
 export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
   getArticlesBdd(): Observable<Article[]> {
-    //httpOptions.set("Access-Control-Allow-Methods", "GET");
-    let databdd = this.http.get<Article[]>("http://bordeu.fr/loadjson.php");
-    console.log(databdd);
-    return this.http.get<Article[]>("http://bordeu.fr/loadjson.php");
+    return this.http.get<Article[]>("http://www.bordeu.fr/loadjson.php",{
+      headers: new HttpHeaders({'Access-Control-Allow-Origin':'*'})
+    });
   }
 
   getArticles(): Observable<Article[]> {

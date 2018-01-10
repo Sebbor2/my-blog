@@ -19,13 +19,13 @@ export class ArticleComponent{
 
   loadArticlesBdd(): void {
     this.articleService.getArticlesBdd()
-      .subscribe(articles => this.articles = articles);
+      .subscribe((articles) => this.articles = articles);
       this.charged = true;
   }
 
   loadArticles(): void {
     this.articleService.getArticles()
-      .subscribe(articles => this.articles = articles);
+      .subscribe((articles) => this.articles = articles);
       this.charged = true;
   }
 
