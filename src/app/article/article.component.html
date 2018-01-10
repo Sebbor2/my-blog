@@ -1,0 +1,50 @@
+
+<div *ngIf="!charged" style="text-align:center">
+  <button (click)="loadArticlesBdd()" class="btn btn-danger">Charger from Bdd<span class="glyphicon glyphicon-log-in"></span></button>
+  <button (click)="loadArticles()" class="btn btn-danger">Charger from Mock<span class="glyphicon glyphicon-log-in"></span></button>
+</div>
+<div *ngIf="articles">
+<div *ngIf="charged">
+  <div class="spacer navbar">
+    <ul class="nav nav-pills navbar-left">
+        <li><a>Blog</a></li>
+        <li><a>Contact</a></li>
+    </ul>
+
+    <ul class="nav nav-pills navbar-right">
+      <li><a (click)="addArticle()"><span class="glyphicon glyphicon-pencil"></span></a></li>
+    </ul>
+  </div>
+
+  <div class="alert alert-info">Il y a {{articles.length}} articles dans le blog</div>
+
+  <div class="spacer input-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+          <input [(ngModel)]="recherche" type="text" class="form-control" placeholder="Rechercher un Article" />
+          <div class="input-group-btn"><button ng-click="Ctrl.razRecherche()" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button></div>
+  </div>
+
+
+  <div class="well spacer" *ngFor="let article of articles">
+    <div class="menu">
+      <a (click)="supArticle(article)"><span class="glyphicon glyphicon-remove-sign"></span></a>
+      <a (click)="editArticle(article)"><span class="glyphicon glyphicon-pencil"></span></a>
+    </div>
+    <div (click)="onSelect(article)">
+      <h3><span [innerHTML]="article.title"></span></h3>
+      <p [innerHTML]="article.content"></p>
+    </div>
+
+  </div>
+
+
+  <app-paging></app-paging>
+  <app-article-detail
+  *ngIf="showDetail"
+  [showDetail]="showDetail"
+  [title]="selectedArticle.title"
+  [content]="selectedArticle.content"></app-article-detail>
+
+</div>
+</div>
+

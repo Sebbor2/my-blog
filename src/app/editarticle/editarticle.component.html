@@ -1,0 +1,19 @@
+<h2>Editer un article</h2>
+
+<div class="spacer">
+  <form>
+    <div class="form-group">
+      <input type="text" name="title" placeholder="Titre" [(ngModel)]="article.title"/>
+    </div>
+    <div class="form-group">
+      <textarea rows="10" name="content" placeholder="Description" [(ngModel)]="article.content"></textarea>
+    </div>
+
+    <div class="spacer text-center">
+      <button class="btn btn-success" (click)="validArticle()">Valider</button>
+      <span class="hSpacer"></span>
+      <button class="btn btn-warning" (click)="cancel()">RAZ</button>
+
+    </div>
+  </form>
+</div>

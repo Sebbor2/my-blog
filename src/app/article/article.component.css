@@ -1,0 +1,11 @@
+ul {
+  border: solid black 5px;
+}
+
+.well:hover {
+  background-color: rgb(200,200,200);
+}
+
+.menu {
+  float:right;
+}
