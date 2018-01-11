@@ -9,11 +9,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title: string;
   version: string;
-  editing : boolean;
+  charged : boolean;
 
   constructor() {
     this.title = "Mon Blog Ng5";
     this.version = "V0.0.1";
-    this.editing = false;
+    this.charged = false;
   }
 }

@@ -4,11 +4,11 @@ import { Article } from '../article';
 import {ArticleService} from '../article.service';
 
 @Component({
-  selector: 'app-article',
-  templateUrl: './article.component.html',
-  styleUrls: ['./article.component.css']
+  selector: 'app-articles',
+  templateUrl: './articles.component.html',
+  styleUrls: ['./articles.component.css']
 })
-export class ArticleComponent{
+export class ArticlesComponent{
   //private articleService : ArticleService;
   articles : Article[];
   selectedArticle : Article;
@@ -17,10 +17,8 @@ export class ArticleComponent{
 
   constructor(private articleService : ArticleService) {}
 
-  loadArticlesBdd(): void {
-    this.articleService.getArticlesBdd()
-      .subscribe((articles) => this.articles = articles);
-      this.charged = true;
+  ngOnInit() {
+    this.loadArticles();
   }
 
   loadArticles(): void {
@@ -35,24 +33,27 @@ export class ArticleComponent{
     this.showDetail = !this.showDetail;
   }
 
-  supArticle(article: Article) {
+  /*supArticle(article: Article) {
     this.articleService.deleteArticle(article);
-  }
+  }*/
 
+  addArticle() {
+    let article = new Article;
+    /*let index = this.articleService.getLastId();
+    if (index) {
+      article.id = this.articleService.getLastId() +1 | 0;
+    } else article.id = 0;*/
+
+    article.title = "Nouvel Article";
+    article.content = "voici un nouvel article a insérer dans la BDD";
+    this.articleService.createArticle(article);
+  }
+/*
   editArticle(article: Article) {
     article.title = "Article modifié";
     this.articleService.updateArticle(article);
   }
 
-  addArticle() {
-    let article = new Article;
-    let index = this.articleService.getLastId();
-    if (index) {
-      article.id = this.articleService.getLastId() +1 | 0;
-    } else article.id = 0;
-
-    article.title = "Article ajouté";
-    this.articleService.createArticle(article);
-  }
+  */
 
 }

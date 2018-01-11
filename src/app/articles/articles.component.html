@@ -1,16 +1,5 @@
-
-<div *ngIf="!charged" style="text-align:center">
-  <button (click)="loadArticlesBdd()" class="btn btn-danger">Charger from Bdd<span class="glyphicon glyphicon-log-in"></span></button>
-  <button (click)="loadArticles()" class="btn btn-danger">Charger from Mock<span class="glyphicon glyphicon-log-in"></span></button>
-</div>
 <div *ngIf="articles">
-<div *ngIf="charged">
   <div class="spacer navbar">
-    <ul class="nav nav-pills navbar-left">
-        <li><a>Blog</a></li>
-        <li><a>Contact</a></li>
-    </ul>
-
     <ul class="nav nav-pills navbar-right">
       <li><a (click)="addArticle()"><span class="glyphicon glyphicon-pencil"></span></a></li>
     </ul>
@@ -45,6 +34,5 @@
   [title]="selectedArticle.title"
   [content]="selectedArticle.content"></app-article-detail>
 
-</div>
 </div>
 
