@@ -13,7 +13,6 @@ export class ArticlesComponent{
   articles : Article[];
   selectedArticle : Article;
   showDetail = false;
-  charged = false;
 
   constructor(private articleService : ArticleService) {}
 
@@ -24,7 +23,6 @@ export class ArticlesComponent{
   loadArticles(): void {
     this.articleService.getArticles()
       .subscribe((articles) => this.articles = articles);
-      this.charged = true;
   }
 
   onSelect(article : Article) {
@@ -33,21 +31,7 @@ export class ArticlesComponent{
     this.showDetail = !this.showDetail;
   }
 
-  /*supArticle(article: Article) {
-    this.articleService.deleteArticle(article);
-  }*/
 
-  addArticle() {
-    let article = new Article;
-    /*let index = this.articleService.getLastId();
-    if (index) {
-      article.id = this.articleService.getLastId() +1 | 0;
-    } else article.id = 0;*/
-
-    article.title = "Nouvel Article";
-    article.content = "voici un nouvel article a insérer dans la BDD";
-    this.articleService.createArticle(article);
-  }
 /*
   editArticle(article: Article) {
     article.title = "Article modifié";

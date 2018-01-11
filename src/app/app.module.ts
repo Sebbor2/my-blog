@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ArticlesComponent } from './articles/articles.component';
-import { EditarticleComponent } from './editarticle/editarticle.component';
+import { EditArticleComponent } from './editarticle/editarticle.component';
 import { ArticleService } from './article.service';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { PagingComponent } from './paging/paging.component';
@@ -19,7 +19,7 @@ import { ContactComponent } from './contact/contact.component';
   declarations: [
     AppComponent,
     ArticlesComponent,
-    EditarticleComponent,
+    EditArticleComponent,
     ArticleDetailComponent,
     PagingComponent,
     DashboardComponent,

@@ -1,34 +1,46 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Article } from '../article';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
+import {ArticleService} from '../article.service';
 
 @Component({
   selector: 'app-edit-article',
   templateUrl: './editarticle.component.html',
   styleUrls: ['./editarticle.component.css']
 })
-export class EditarticleComponent {
+export class EditArticleComponent {
   article: Article;
-  idCount: number;
 
-  @Output() onCancel: EventEmitter<void>;
-  @Output() onValid: EventEmitter<Article>;
+  constructor(
+    private articleService : ArticleService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location
+    ) {this.article = new Article();}
 
-  constructor() {
-    this.onCancel = new EventEmitter<void>();
-    this.onValid = new EventEmitter<Article>();
-    this.article = new Article();
-    this.idCount = 10;
+  ngOnInit() : void {
+    this.getArticle();
+  }
+
+  getArticle() : void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    if(id) {
+      this.articleService.getArticle(id)
+        .subscribe(article => this.article = article);
+    }
   }
 
   cancel() {
-    this.onCancel.emit();
     this.article.title = "";
     this.article.content = "";
   }
 
   validArticle() {
-    this.onValid.emit(new Article(this.idCount,this.article.title,this.article.content));
-    this.idCount++;
+    //TODO : Verifier si edit ou new
+    this.articleService.createArticle(this.article);
+    this.router.navigateByUrl("/articles");
   }
 
 }

@@ -1,7 +1,7 @@
 <div *ngIf="articles">
   <div class="spacer navbar">
     <ul class="nav nav-pills navbar-right">
-      <li><a (click)="addArticle()"><span class="glyphicon glyphicon-pencil"></span></a></li>
+      <li><a routerLink="/edit"><span class="glyphicon glyphicon-pencil"></span></a></li>
     </ul>
   </div>
 
@@ -16,8 +16,8 @@
 
   <div class="well spacer" *ngFor="let article of articles">
     <div class="menu">
-      <a (click)="supArticle(article)"><span class="glyphicon glyphicon-remove-sign"></span></a>
-      <a (click)="editArticle(article)"><span class="glyphicon glyphicon-pencil"></span></a>
+      <a><span class="glyphicon glyphicon-remove-sign"></span></a>
+      <a routerLink="/edit/{{article.id}}"><span class="glyphicon glyphicon-pencil"></span></a>
     </div>
     <div (click)="onSelect(article)">
       <h3><span [innerHTML]="article.title"></span></h3>
